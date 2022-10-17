@@ -1,0 +1,267 @@
+body {
+    position: fixed;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* scroll-behavior: smooth; */
+}
+/* ----------------------------------------------------- test mobile fix */
+#markerSideBar {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 188px;
+    background-color: #ff1377;
+    -webkit-transform: translate(-100%,-50%);
+    transform: translate(-100%,-50%);
+}
+
+#rightSideBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 200px;
+    z-index: 9;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    transition: width .6s cubic-bezier(.23,1,.32,1),-webkit-transform .6s cubic-bezier(.23,1,.32,1);
+    transition: width .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1);
+    transition: width .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1),-webkit-transform .6s cubic-bezier(.23,1,.32,1);
+}
+
+#rightSideBar.hover .SideBar {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+#rightSideBar.swing .SideBar {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+#rightSideBar .SideBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    transition: -webkit-transform .6s cubic-bezier(.23,1,.32,1);
+    transition: transform .6s cubic-bezier(.23,1,.32,1);
+    transition: transform .6s cubic-bezier(.23,1,.32,1), -webkit-transform .6s cubic-bezier(.23,1,.32,1);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+#rightSideBar.hover .SideBar-content {
+    -webkit-animation: none;
+    animation: none;
+}
+
+#rightSideBar .SideBar-content {
+    width: 100%;
+    height: 100%;
+    overflow-x: visible;
+    -ms-overflow-style: none;
+}
+
+#rightSideBar .scroll-point {
+    overflow-y: scroll;
+    display: block;
+    width: 100%;
+    height: 100%;
+    width: calc(100% + 14px);
+    position: relative;
+    right: 0;
+    margin-right: -14px;
+}
+
+#rightSideBar .prev-button {
+    display: block;
+    position: fixed;
+    z-index: 20;
+    top: 15px;
+    left: 0;
+    padding-left: 100px;
+    font-family: tungsten;
+    font-size: 50px;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: #ff1377;
+}
+
+#rightSideBar .prev-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff1377;
+    width: 86px;
+    height: 36px;
+    background-image: url(../img/cursors/arrow-right.svg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+}
+
+@media screen and (min-width: 768px) {
+  #rightSideBar .prev-button {
+      display: none;
+  }
+}
+
+#rightSideBar .RealisationGroup {
+    width: 100%;
+}
+
+#rightSideBar .RealisationGroup ul {
+    margin-top: calc(50vh - 94px);
+    width: 100%;
+}
+
+#rightSideBar .RealisationGroup li {
+    width: 100%;
+    height: 114px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.RealisationGroup .Realisation {
+    width: 100%;
+    position: relative;
+}
+
+.RealisationGroup .Realisation:hover .content-container {
+    opacity: 0;
+}
+
+.RealisationGroup .Realisation .content-container {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+    background-color: rgba(0,0,0,.5);
+    transition: .3s opacity cubic-bezier(.23,1,.32,1);
+}
+
+.RealisationGroup .Realisation .content {
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+}
+
+.RealisationGroup .Realisation .content h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.RealisationGroup .Realisation .content h2, .RealisationGroup .Realisation .content h3 {
+    color: #fff;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    font-family: orator;
+}
+
+.main-nav h1, .main-nav h2, .main-nav h3, .main-nav h4, .main-nav h5, .main-nav p, .main-nav span {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.RealisationGroup .Realisation .content h2 {
+    font-size: 19px;
+}
+
+.RealisationGroup .placeholder {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.RealisationGroup .Realisation .thumb-preview {
+    position: relative;
+    z-index: 10;
+}
+
+.RealisationGroup .Realisation video {
+    width: 100%;
+}
+
+.next-group {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.next-group .next-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.next-group span {
+    font-family: orator;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.next-group h2 {
+    font-family: tungsten,impact;
+    font-size: 45px;
+    text-transform: uppercase;
+}
+/*  */
+.wide {
+    width: 50vw !important;
+}
+.wide .RealisationGroup .Realisation {
+    height: calc(50vw * .5625)!important;
+}
+/*  */
+#rightSideBar .video-player video::-webkit-media-controls {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+#rightSideBar .video-player {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 12;
+}

@@ -1,0 +1,687 @@
+@font-face {
+  font-family: "orator";
+  src: url("fonts/orator.woff") format("woff");
+}
+@font-face {
+  font-family: "tungsten";
+  src: url("fonts/tungsten.woff") format("woff");
+}
+@font-face {
+  font-family: "tungsten-outline";
+  src: url("fonts/tungsten-outline.woff") format("woff");
+}
+@font-face {
+  font-family: "icons";
+  src: url("fonts/icons.woff") format("woff");
+}
+/* Start Front page ---------------------------------------------------------------------->*/
+h1{
+  font-size: 260px;
+  font-family: tungsten-outline,impact;
+  color: #fff;
+  margin:0;
+  padding:0;
+}
+
+#main-content .section {
+  text-align:center;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top:0;
+  right:0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  /* background-color: black; /* in case the video doesn't fit the whole page */ */
+  background-image: /*our video*/;
+  background-position: center center;
+  background-size: contain;
+  object-fit: cover; /*cover video background */
+  z-index:3;
+  /* opacity: 0.5; */
+}
+
+#main-content .section .layer{
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  left: 0;
+  top: 30%;
+  /*
+  * Preventing flicker on some browsers
+  * See http://stackoverflow.com/a/36671466/1081396  or issue #183
+  */
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+/*solves problem with overflowing video in Mac with Chrome */
+#main-content .section {
+  overflow: hidden;
+}
+
+/* Hiding video controls
+* See: https://css-tricks.com/custom-controls-in-html5-video-full-screen/
+* --------------------------------------- */
+video::-webkit-media-controls {
+  display:none !important;
+}
+
+#main-content .section img {
+  position: absolute;
+  /* z-index: 3; */
+  height: 100%;
+  min-width: 100%;
+  min-height: 50vw;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  transition: -webkit-filter .3s ease-out;
+  transition: filter .3s ease-out;
+  transition: filter .3s ease-out, -webkit-filter .3s ease-out;
+}
+/* End front page ---------------------------------------------------------------------->*/
+
+
+/* Start logo ------------------------------------------------------------------------->*/
+.logo-container {
+    overflow: hidden;
+    position: absolute;
+    top: 17px;
+    left: 27px;
+    z-index: 990;
+    /* transition: .3s color cubic-bezier(.23,1,.32,1); */
+    cursor: pointer;
+}
+.logo-container:after {
+    content: "ROSSLANE";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: tungsten,impact;
+    color: #ff1377;
+    font-size: 77px;
+    transition: .3s width cubic-bezier(.23,1,.32,1);
+}
+.logo-container h1 {
+    font-family: tungsten,impact;
+    color: #fff;
+    font-size: 77px;
+    transition: 1s color cubic-bezier(.23,1,.32,1);
+}
+.logo-container:hover:after {
+    width: 100%;
+}
+.logo-container:hover h1{
+    color: #ff1377;
+}
+/* End logo -------------------------------------------------------------------------->*/
+
+
+/* Contact  -------------------------------------------------------------------------->*/
+.contact-btn {
+    position: fixed;
+    bottom: 13px;
+    left: 12px;
+    z-index: 11;
+    padding: 14px;
+    color: #fff;
+    font-family: orator;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+#Contact, #popupCall {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    text-transform: uppercase;
+}
+#Contact .container-contact, #popupCall .container-contact {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+@media screen and (min-width: 768px) {
+  #Contact .close.icon, #popupCall .close.icon {
+      display: none;
+  }
+}
+#Contact .close.icon, #popupCall .close.icon {
+    color: #fff;
+    position: fixed;
+    top: 22px;
+    right: 15px;
+    margin-top: 0;
+    margin-left: 0;
+    width: 21px;
+    height: 21px;
+    z-index: 10;
+}
+#Contact .close.icon:before, #popupCall .close.icon:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 1px;
+    background-color: #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+#Contact .close.icon:after, #popupCall .close.icon:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 1px;
+    background-color: #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#BlurZoomFrame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* z-index: 5; */
+}
+
+#Contact .content-wrapper, #popupCall .content-wrapper  {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    text-align: center;
+    color: #fff;
+    font-family: orator;
+    font-weight: 400;
+}
+
+/* #Contact .content-wrapper:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .15;
+} */
+.app-popup a:hover {
+  color: #ff1377;
+}
+.close-wraper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+@media screen and (min-width: 768px) {
+  #Contact .content, #popupCall .content {
+      min-width: 500px;
+      padding: 0 40px;
+  }
+}
+#Contact .content, #popupCall .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+#Contact .content.length-2 h1, #popupCall .content.length-2 h1 {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 32px;
+    max-width: 610px;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+    text-transform: lowercase;
+    font-family: orator;
+}
+#Contact .content.length-2 .socials, #popupCall .content.length-2 .socials {
+    margin-top: 30px;
+    margin-bottom: 31px;
+    position: relative;
+    z-index: 3;
+}
+#Contact .content.length-2 .socials li, #popupCall .content.length-2 .socials li {
+    width: 40px;
+    display: inline-block;
+    cursor: pointer;
+}
+#Contact .contactUnit, #popupCall .contactUnit {
+    margin-top: 22px;
+}
+#Contact .content.length-2 h3, #popupCall .content.length-2 h3 {
+    font-size: 180px;
+    font-family: tungsten,impact;
+    line-height: 150px;
+    margin: 10px 0;
+    white-space: nowrap;
+}
+#popupCall .content.length-2 h3 {
+    font-size: 160px;
+}
+
+#popupCall input {
+    background: none;
+    border: none;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    width: 52%;
+    border-bottom: 1px solid #939599;
+}
+#popupCall input:focus {
+    outline: none !important;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+#popupCall input::placeholder, #popupCall input:-ms-input-placeholder,
+#popupCall input::-webkit-input-placeholder {
+    color: #afb2b7;
+}
+#popupCall button {
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin: 25px 0;
+    font-family: orator,impact;
+    font-size: 16px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+#popupCall button:focus {
+    outline: none !important;
+    border: 1px solid red;
+}
+#Contact .content.length-2 p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+}
+#popupCall .content.length-2 p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+}
+#popupCall .content .info {
+    font-size: 33px !important;
+}
+#Contact .content.length-2 p.link>a, #popupCall .content.length-2 p.link>a {
+    display: block;
+    -webkit-transform: color .3s ease-out;
+    transform: color .3s ease-out;
+}
+#Contact .content.length-2 .adress, #popupCall .content.length-2 .adress {
+    font-size: 14px;
+    margin-top: 22px;
+}
+#Contact .credits, #popupCall .credits {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: .3;
+    text-transform: lowercase;
+}
+[class*=" icon-"]:before, [class^=icon-]:before {
+    font-family: icons;
+    font-style: normal;
+    font-weight: 400;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-facebook:before {
+    content: '\f09a';
+}
+.icon-instagramm:before {
+    content: '\f16d';
+}
+.icon-vimeo:before {
+    content: '\f27d';
+}
+.icon-youtube:before {
+    content: '\f16a';
+}
+.icon-whatsapp:before {
+    content: '\f232';
+}
+.icon-telegram:before {
+    content: '\f2c6';
+}
+.icon-linkedin:before {
+    content: '\f30c';
+}
+.icon-viber:before {
+    content: '\f4ac';
+}
+.icon-pdf:before {
+    content: '\f1c1';
+}
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+.blur {
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+  filter: blur(8px);
+  transform: scale(1.1) !important;
+}
+.opanimation {
+  opacity: 1;
+  animation-name: block_show;
+  animation-duration: 2s;
+}
+@keyframes block_show {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+/* End Contact ----------------------------------------------------------------------->*/
+
+
+/* Start Loader ---------------------------------------------------------------------->*/
+#main-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    /* background-color:#000; */
+    color: #fff;
+}
+#main-loader .background-image-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* transition: width 2s;
+    transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); */
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+#main-loader .background-image-container img {
+    height: 100%;
+    width: 178vh;
+    min-width: 100%;
+    min-height: 56.25vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+#main-loader h2 {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    font-family: tungsten, impact;
+    color: #fff;
+    font-size: 180px;
+    line-height: 190px;
+    text-transform: uppercase;
+    font-smoothing: antialiased;
+    text-align: center;
+}
+/* End loader ---------------------------------------------------------------------->*/
+
+/* Start AllTagCSS ----------------------------------------------------------------->*/
+body, h1, h2, h3, h4, h5, h6, header, html,
+i, img, ins, menu, nav, ol, p, span, table,
+tbody, td, tfoot, th, thead, tr, tt, u, ul, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* Start AllTagCSS ------------------------------------------------------------------>*/
+
+
+/* Start main menu ------------------------------------------------------------------>*/
+ol, ul {
+    list-style: none;
+}
+ #main-scroller #all-list {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9!important;
+    -webkit-transform-origin: left;
+    transform-origin: left;
+    /* -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out; */
+}
+
+/* #main-scroller .list-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ddd;
+}
+#main-scroller #list-1 {
+    will-change: transform;
+    z-index: 15;
+} */
+#main-scroller .list-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    /* color: #ddd; */
+}
+
+#main-scroller .list-container ul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* -webkit-transform: translateY(100vh) translateY(200px);
+    transform: translateY(100vh) translateY(200px); */
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+#main-scroller .list-container ul li {
+    font-family: tungsten-outline, impact;
+    font-size: 260px;
+    line-height: 221px;
+    text-transform: uppercase;
+    font-smoothing: antialiased;
+    text-align: center;
+}
+#main-scroller .list-container ul#list-1 li {
+    overflow: hidden;
+}
+#main-scroller .list-container ul#list-1 p {
+    display: inline-block;
+    font-family: tungsten-outline,impact;
+    position: relative;
+    transition: color .5s cubic-bezier(.23,1,.32,1);
+    color: rgba(255,255,255,.5);
+}
+#main-scroller .list-container ul#list-1 p:hover {
+    color: rgba(255,255,255,1);
+}
+/* --------- */
+#main-scroller .list-container ul.over {
+    color: #ff1377;
+    pointer-events: none;
+    z-index: 1006;
+}
+#main-scroller .list-container ul.over li {
+    font-family: tungsten, impact;
+}
+/* --------- */
+
+/* End main menu ------------------------------------------------------------------->*/
+
+
+/* Start video slider -------------------------------------------------------------->*/
+
+/* End video slider ----------------------------------------------------------------->*/
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-play {
+    cursor: url(../img/cursors/play.cur) 16 16,auto;
+    cursor: url(../img/cursors/play.png) 16 16,auto;
+    cursor: -webkit-image-set(url(../img/cursors/play.png) 1x, url(../img/cursors/play@2x.png) 2x) 16 16,auto;
+}
+.cursor-close {
+    cursor: url(../img/cursors/cross.cur) 16 16,auto;
+    cursor: url(../img/cursors/cross.png) 16 16,auto;
+    cursor: -webkit-image-set(url(../img/cursors/cross.png) 1x, url(../img/cursors/cross@2x.png) 2x) 16 16,auto;
+}
+.cursor-pause {
+    cursor: url(../img/cursors/pause.cur) 16 16,auto;
+    cursor: url(../img/cursors/pause.png) 16 16,auto;
+    cursor: -webkit-image-set(url(../img/cursors/pause.png) 1x, url(../img/cursors/pause@2x.png) 2x) 16 16,auto;
+}
+.cursor-default {
+    cursor: default;
+}
+
+/* Mobile customize ------------------------------------------------------------------> */
+@media screen and (max-width: 768px) and (orientation: portrait)  {
+  #main-loader h2, .logo-container h1, .logo-container:after,  #Contact .content.length-2 h3, #popupCall .content.length-2 h3 {
+    font-size: 50px;
+    line-height: normal;
+    margin: 0;
+  }
+  #main-scroller .list-container ul li {
+    font-size: 60px;
+    line-height: 60px;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+  }
+  #Contact .content.length-2 p {
+    font-size: 12px;
+    line-height: normal;
+  }
+  #Contact .content.length-2 .socials li, #popupCall .content.length-2 .socials li { //app-popup
+    width: auto;
+  }
+  .contact-btn {
+    bottom: initial;
+    left: initial;
+    top: 25px;
+    right: 10px;
+    background-image: url(../img/phone.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 26px 26px;
+    font-size: 0;
+  }
+  .logo-container {
+    top: 15px;
+    left: 15px;
+  }
+
+  #rightSideBar {
+    width: 10px;
+  }
+  #rightSideBar.hover {
+    width: 100%;
+    z-index: 992;
+  }
+  #rightSideBar.hover .RealisationGroup li {
+    margin-bottom: 0;
+    height: calc(100vh/3);
+  }
+  #rightSideBar.hover .RealisationGroup ul {
+    margin-top: 0;
+  }
+
+  #markerSideBar {
+    height: 50px;
+    width: 68px;
+  }
+
+  #markerSideBar:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ff1377;
+      width: 68px;
+      height: 50px;
+      background-image: url(../img/cursors/arrow-right.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 24px 24px;
+  }
+  #all-list li.active {
+      -webkit-transform: translateX(-48px);
+      transform: translateX(-48px)
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  #main-scroller .list-container ul li, #main-loader h2,  #Contact .content.length-2 h3, #popupCall .content.length-2 h3 {
+      font-size: 125px;
+      line-height: 125px;
+    }
+  #markerSideBar {
+      height: 125px;
+  }
+}
+
+/* @media screen and (max-height: 768px) and (orientation: landscape) {
+    #Contact .content.length-2 h3 { //app-popup
+      font-size: 125px;
+      line-height: 90px;
+    }
+    #popupCall .content.length-2 h3 {
+      font-size: 100px;
+      line-height: 80px;
+    }
+} */
